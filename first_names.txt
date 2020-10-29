@@ -1,0 +1,19 @@
+Mage
+Thief
+Villager
+Alchemist
+Healer
+Cleric
+Valkyrie
+Beserker
+Warrior
+Chicken
+Beast Tamer
+Man with Sword
+Women with Sword
+Water Bender
+Horse Rider
+Beer Brewer
+Elephant Rider
+Cavalier
+Ferret Wielder
