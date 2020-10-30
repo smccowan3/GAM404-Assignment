@@ -18,6 +18,7 @@ public class CharacterRoster : MonoBehaviour
     }
     public void setPickedTrue(int charNum)
     {
+        // to avoid duplicate picks
         CharArray[charNum].picked = true;
     }
 
@@ -49,17 +50,20 @@ public class Character
             multip = 2;
             Debug.Log(first_name + " " + last_name + " has successfully crit! Double damage has been inflicted");
         }
+        //now calc and return dmg
         total_damage = damage * multip;
         Debug.Log(first_name + " " + last_name + " has dealt " + total_damage + " damage");
         return total_damage;
     }
     public void defend(double dmg)
     {
+        //check for dodge
         int dodgeScore = UnityEngine.Random.Range(1, 100);
         if (dodgeScore <= dodge_chance)
         {
             Debug.Log(first_name + " " + last_name + " has successfully dodged! No damage has been taken");
         }
+        //take dmg
        else
         {
             Debug.Log(first_name + " " + last_name + " has failed to dodge and taken " + dmg + " damage");
@@ -77,6 +81,7 @@ public class Character
     }
     public void setVals(int charNum)
     {
+        //get name
         charNum = charNum + 1; // print 1 not zero
         string[] firstnamelist = File.ReadAllLines("first_names.txt");
         int rnd = UnityEngine.Random.Range(0, firstnamelist.Length);
@@ -85,15 +90,18 @@ public class Character
         int rnd2 = UnityEngine.Random.Range(0, lastnamelist.Length);
         last_name = lastnamelist[rnd2];
        
+        //randomise values
         dexterity = UnityEngine.Random.Range(1, 100);
         stamina = UnityEngine.Random.Range(1, 100);
         strength = UnityEngine.Random.Range(1, 100);
         acuity = UnityEngine.Random.Range(1, 100);
-        dodge_chance = dexterity / 500;
+        dodge_chance = dexterity / 10;
         health = stamina*2;
         damage = strength;
-        crit_chance = acuity / 500;
+        crit_chance = acuity / 10;
         curr_health = health;
+
+        //now report
         Debug.Log("Character " + charNum + " is " + first_name + " " + last_name + " with a dexterity of " 
             + dexterity + ", a stamina of " + stamina + ", a strength of " + strength + ", and an acuity of " + acuity + ".");
     }

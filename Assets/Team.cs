@@ -9,7 +9,6 @@ public class Team : MonoBehaviour
     public int teamNum;
     private CharacterRoster charRosterScript;
     private Character[] charRoster;
-    // Start is called before the first frame update
     public void chooseCharacters()
     {
         charRosterScript = Character_Roster.GetComponent<CharacterRoster>();
@@ -30,7 +29,7 @@ public class Team : MonoBehaviour
             }
             else if (charRoster[rnd].picked == true)
             {
-                i--; // this will rerun loop
+                i--; // this will rerun loop. avoids duplicates
             }
         }
 
@@ -47,11 +46,9 @@ public class Team : MonoBehaviour
                 deadScore++;  
             }
         }
-        //Debug.Log("Team " + teamNum + " has " + deadScore + " dead members");
         if (deadScore == 5)
         {
-            //Debug.Log("Team " + teamNum + "'s members are all dead");
-            teamAlive = false;
+            teamAlive = false; // returning this will break while loop
         }
         return teamAlive;
     }
